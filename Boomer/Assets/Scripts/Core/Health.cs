@@ -6,12 +6,20 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int health;
 
-    private void removeHealth(int damage)
+    private void Update()
+    {
+        if(health <= 0)
+        {
+            die();
+        }
+    }
+
+    public void removeHealth(int damage)
     {
         health -= damage;
     }
 
-    private void addHealth(int additionalHealth)
+    public void addHealth(int additionalHealth)
     {
         health += additionalHealth;
     }
@@ -21,8 +29,8 @@ public class Health : MonoBehaviour
         Debug.Log("Killed");
         /*
             plays death animation
-            Destroys object
         */
+        gameObject.SetActive(false);
     }
 
     public int getHealth()

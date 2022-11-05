@@ -5,31 +5,28 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     private EnemyMovement enemyMovement;
-    /*
-    Movement stops to attack
-    Plays attack animation
-    Lowers health of recipient
-    */
+    [SerializeField] private int damage;
+
+    private void Start()
+    {
+        enemyMovement = GetComponent<EnemyMovement>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Property")
+        {
+            attack(collision);
+        }
+    }
 
 
     private void attack(Collision2D collision)
     {
         GetComponent<EnemyMovement>().changeSpeed(0);
         //Play animation
-        collision.collider.transform.GetComponent<Health>().die();
+        collision.collider.transform.GetComponent<Health>().removeHealth(damage);
+        Debug.Log(collision.collider.transform.GetComponent<Health>().getHealth());
     }
 
-
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        enemyMovement = GetComponent<EnemyMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
