@@ -16,4 +16,9 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
+
+    public void changeSpeed(int newSpeed)
+    {
+        speed = newSpeed;
+    }
 }

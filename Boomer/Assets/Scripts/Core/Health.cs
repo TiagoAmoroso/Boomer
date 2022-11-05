@@ -16,9 +16,9 @@ public class Health : MonoBehaviour
         health += additionalHealth;
     }
 
-    private void die()
+    public void die()
     {
-        consolde.log("Killed")
+        Debug.Log("Killed");
         /*
             plays death animation
             Destroys object

@@ -12,11 +12,11 @@ public class EnemyAttack : MonoBehaviour
     */
 
 
-    private void attack(Collision2D attackObject)
+    private void attack(Collision2D collision)
     {
-        getComponent<enemyMovement>().changeSpeed(0);
+        GetComponent<EnemyMovement>().changeSpeed(0);
         //Play animation
-        attackObject.Health.die();
+        collision.collider.transform.GetComponent<Health>().die();
     }
 
 
@@ -24,7 +24,7 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        enemyMovement = getComponent<enemyMovement>();
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
     // Update is called once per frame
