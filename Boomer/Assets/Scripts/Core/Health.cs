@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int health;
+    [SerializeField] private int health;
 
     private void removeHealth(int damage)
     {
         health -= damage;
     }
 
-    public void addHealth(int additionalHealth)
+    private void addHealth(int additionalHealth)
     {
         health += additionalHealth;
+    }
+
+    private void die()
+    {
+        consolde.log("Killed")
+        /*
+            plays death animation
+            Destroys object
+        */
     }
 
     public int getHealth()
