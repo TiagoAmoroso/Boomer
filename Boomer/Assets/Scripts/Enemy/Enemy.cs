@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     private Health health;
     private int damage;
 
+    [SerializeField] private WeaponManager weaponManager;
+    private Weapon currentWeapon;
+
     private void Start()
     {
         health = GetComponent<Health>();
@@ -15,8 +18,10 @@ public class Enemy : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Get weapon Object
-        //Use weapon details to determine damage etc...
+        currentWeapon = weaponManager.getCurrentWeapon();
+        damage = currentWeapon.getDamage();
+        //Play sound
+        //Spawn particles
 
         health.removeHealth(damage);
     }

@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Weapon fallbackWeapon;
+
+    private void Start()
     {
-        
+        deactivateAllWeapons();
+
+        fallbackWeapon.activate();
     }
 
-    // Update is called once per frame
-    void Update()
+    public Weapon getCurrentWeapon()
     {
-        
+        for (int i = 0; i< gameObject.transform.childCount; i++)
+        {
+
+            if(gameObject.transform.GetChild(i).GetComponent<Weapon>().getActive())
+            {
+                return gameObject.transform.GetChild(i).GetComponent<Weapon>();
+            }
+        }
+
+        return fallbackWeapon;
+
+    }
+
+    public void deactivateAllWeapons()
+    {
+        for (int i = 0; i< gameObject.transform.childCount; i++)
+        {
+            gameObject.transform.GetChild(i).GetComponent<Weapon>().deactivate();
+        }
     }
 }
