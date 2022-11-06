@@ -21,23 +21,73 @@ public class WaveManager : MonoBehaviour
     
     private int currentWave;
 
+    private float spawnMultiplier;
+    private int spawnMax = 2;
+
+    private Spawner spawner;
+
     private void Start()
     {
+        spawner = GetComponent<Spawner>();
         currentWave = 0;
     }
 
 
     private void Update()
     {
-        if(currentWave >= poolOneMaxWave)
+        //Trash code... I know...
+
+        if(currentWave >= 0)
         {
             currentEnemyPool = enemyPoolOne;
         }
+        else if(currentWave > poolOneMaxWave)
+        {
+            currentEnemyPool = enemyPoolTwo;
+        }
+        else if(currentWave > poolTwoMaxWave)
+        {
+            currentEnemyPool = enemyPoolThree;
+        }
+        else if(currentWave > poolThreeMaxWave)
+        {
+            currentEnemyPool = enemyPoolFour;
+        }
+        else if(currentWave > poolFourMaxWave)
+        {
+            currentEnemyPool = enemyPoolFinal;
+        }
+
+
+        if(spawner.getEnemiesSpawned() >= spawnMax)
+        {
+            spawner.stopSpawning();
+
+            if(!spawner.areEnemiesSpawnedAlive())
+            {
+                nextWave();
+            }
+        }
+        else
+        {
+            spawner.startSpawning();
+        }
+
+        
+
     }
+
+    private void changeSpawnPool()
+    {
+        
+    } 
+
+
 
     private void nextWave()
     {
         currentWave += 1;
+        spawner.resetEnemiesSpawned();
     }
 
     private void changeWave(int newWave)

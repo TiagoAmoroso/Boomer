@@ -26,6 +26,9 @@ public class Spawner : MonoBehaviour
     private int enemyIndex;
     private float posY;
     private GameObject newSpawnedEnemy;
+
+    private int enemiesSpawned;
+    private bool spawning = true;
     
 
     private void start()
@@ -37,10 +40,45 @@ public class Spawner : MonoBehaviour
     {
         timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= spawnInterval)
-        {
-            spawnEnemy(enemyTypes);
+        if(spawning){
+            if (timeSinceLastSpawn >= spawnInterval)
+            {
+                spawnEnemy(enemyTypes);
+            }
         }
+    }
+
+    public int getEnemiesSpawned()
+    {
+        return enemiesSpawned;
+    }
+
+    public void resetEnemiesSpawned()
+    {
+        enemiesSpawned = 0;
+    }
+
+    public void startSpawning()
+    {
+        spawning = true;
+    }
+
+    public void stopSpawning()
+    {
+        spawning = false;
+    }
+
+    public bool areEnemiesSpawnedAlive()
+    {
+        for (int i = 0; i< enemyHolder.transform.childCount; i++)
+        {
+
+            if(enemyHolder.transform.GetChild(i).gameObject.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -52,7 +90,6 @@ public class Spawner : MonoBehaviour
         enemyIndex = (int)(Random.Range(0, enemyPool.Length));
 
         newSpawnedEnemy = Instantiate(enemyTypes[enemyIndex]);
-        //Move to enemy holder
  
         newSpawnedEnemy.transform.SetParent(enemyHolder.transform);
 
@@ -60,6 +97,7 @@ public class Spawner : MonoBehaviour
         newSpawnedEnemy.SetActive(true);
 
         timeSinceLastSpawn = 0;
+        enemiesSpawned += 1;
     }
 }
 
