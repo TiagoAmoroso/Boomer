@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
 
     [Header("Enemies")]
     [SerializeField] private GameObject[] enemyTypes;
+    [SerializeField] private GameObject enemyHolder;
 
     private int enemyIndex;
     private float posY;
@@ -47,15 +48,14 @@ public class Spawner : MonoBehaviour
     {
         posY = Random.Range(minY, maxY);
         Vector2 spawnPos = new Vector2 (posX, posY);
-        Debug.Log(spawnPos);
 
-        enemyIndex = Random.Range(0, enemyPool.Length);
-        Debug.Log(enemyIndex);
-
-        enemyIndex = (int)(enemyIndex);
-        Debug.Log(enemyIndex);
+        enemyIndex = (int)(Random.Range(0, enemyPool.Length));
 
         newSpawnedEnemy = Instantiate(enemyTypes[enemyIndex]);
+        //Move to enemy holder
+ 
+        newSpawnedEnemy.transform.SetParent(enemyHolder.transform);
+
         newSpawnedEnemy.transform.position = spawnPos;
         newSpawnedEnemy.SetActive(true);
 

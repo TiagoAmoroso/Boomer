@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
 
     public void die()
     {
-        Debug.Log("Killed");
+        Debug.Log(gameObject.name + " Killed");
         /*
             plays death animation
         */
