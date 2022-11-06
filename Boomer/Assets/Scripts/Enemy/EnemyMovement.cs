@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private int speed;
     new private Transform transform;
+
+    [SerializeField] private int speed;
+
+    private bool moving = true;
 
     private void Start()
     {
@@ -14,7 +17,20 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if(moving)
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
+    }
+
+    public void stopMoving()
+    {
+        moving = false;
+    }
+
+    public void startMoving()
+    {
+        moving = true;
     }
 
     public void changeSpeed(int newSpeed)
