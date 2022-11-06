@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    new private Transform transform;
 
     [SerializeField] private float speed;
 
     private bool moving = true;
-
-    private void Start()
-    {
-        transform = GetComponent<Transform>();
-    }
 
     private void Update()
     {

@@ -10,6 +10,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int poolThreeMaxWave;
     [SerializeField] private int poolFourMaxWave;
 
+    [SerializeField] private float timeBetweenWaves;
+    private float timeSinceLastWave = 0;
+
     [Header("Pools")]
     [SerializeField] private GameObject[] enemyPoolOne;
     [SerializeField] private GameObject[] enemyPoolTwo;
@@ -23,7 +26,7 @@ public class WaveManager : MonoBehaviour
 
     //Need to do this!!!
     private float spawnMultiplier;
-    private int spawnMax = 3;
+    [SerializeField] private int spawnMax;
 
     private Spawner spawner;
 
@@ -32,6 +35,7 @@ public class WaveManager : MonoBehaviour
         spawner = GetComponent<Spawner>();
         spawner.changeEnemyPool(enemyPoolOne);
         currentWave = 1;
+        timeSinceLastWave = timeBetweenWaves;
     }
 
 
@@ -74,8 +78,13 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            spawner.startSpawning();
+            if(timeSinceLastWave >= timeBetweenWaves)
+            {
+                spawner.startSpawning();
+            }
         }
+
+        timeSinceLastWave += Time.deltaTime;
     }
 
 
@@ -85,6 +94,7 @@ public class WaveManager : MonoBehaviour
         currentWave += 1;
         spawner.resetEnemiesSpawned();
         Debug.Log("Wave: " + currentWave);
+        timeSinceLastWave = 0;
     }
 
     private void changeWave(int newWave)

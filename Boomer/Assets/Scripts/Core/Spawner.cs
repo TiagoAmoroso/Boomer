@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float posX;
     [SerializeField] private float spawnInterval;
-    private float timeSinceLastSpawn ;
+    private float timeSinceLastSpawn;
 
     [Header("Enemies")]
     [SerializeField] private GameObject enemyHolder;
