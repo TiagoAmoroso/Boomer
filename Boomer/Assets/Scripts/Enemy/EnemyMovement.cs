@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     new private Transform transform;
 
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
 
     private bool moving = true;
 

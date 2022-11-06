@@ -57,11 +57,11 @@ public class EnemyAttack : MonoBehaviour
     {
         if(timeSinceLastAttack >= attackInterval)
         {
-            Debug.Log("Attacking");
+            Debug.Log(gameObject.name + " is attacking");
             //Play animation
             collision.collider.transform.GetComponent<Health>().removeHealth(damage);
             timeSinceLastAttack = 0;
-            Debug.Log(collision.collider.transform.GetComponent<Health>().getHealth());
+            Debug.Log(collision.gameObject.name + "'s health is at: " + collision.collider.transform.GetComponent<Health>().getHealth());
         }
     }
 

@@ -20,8 +20,8 @@ public class Spawner : MonoBehaviour
     private float timeSinceLastSpawn ;
 
     [Header("Enemies")]
-    [SerializeField] private GameObject[] enemyTypes;
     [SerializeField] private GameObject enemyHolder;
+    private GameObject[] enemyPool;
 
     private int enemyIndex;
     private float posY;
@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     
 
     private void start()
-    {
+    {   
         timeSinceLastSpawn = spawnInterval;
     }
 
@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
         if(spawning){
             if (timeSinceLastSpawn >= spawnInterval)
             {
-                spawnEnemy(enemyTypes);
+                spawnEnemy(enemyPool);
             }
         }
     }
@@ -82,6 +82,12 @@ public class Spawner : MonoBehaviour
     }
 
 
+    public void changeEnemyPool(GameObject[] newEnemyPool)
+    {
+        enemyPool = newEnemyPool;
+    }
+
+
     private void spawnEnemy(GameObject[] enemyPool)
     {
         posY = Random.Range(minY, maxY);
@@ -89,7 +95,7 @@ public class Spawner : MonoBehaviour
 
         enemyIndex = (int)(Random.Range(0, enemyPool.Length));
 
-        newSpawnedEnemy = Instantiate(enemyTypes[enemyIndex]);
+        newSpawnedEnemy = Instantiate(enemyPool[enemyIndex]);
  
         newSpawnedEnemy.transform.SetParent(enemyHolder.transform);
 
