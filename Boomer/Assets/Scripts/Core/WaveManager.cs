@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
     private int currentWave;
 
     private float spawnMultiplier;
-    private int spawnMax = 2;
+    private int spawnMax = 3;
 
     private Spawner spawner;
 
