@@ -16,7 +16,7 @@ TagManager:
   - Property
   - Enemy
   - Bullets
-  - 
+  - Defences
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
     locked: 0
   - name: Bullets
     uniqueID: 1264138891
+    locked: 0
+  - name: UI
+    uniqueID: 2493337595
     locked: 0

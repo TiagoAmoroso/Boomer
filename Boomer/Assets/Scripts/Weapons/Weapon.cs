@@ -70,10 +70,14 @@ public class Weapon : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Debug.Log(gameObject.name + " fired!");
+
         //particles
         newEmitter = Instantiate(particleEmitter);
         newEmitter.transform.position = mousePos;
+
         //sound
+        SoundManager.instance.PlaySound(attackSound);
+
         resetTimeSinceLastShot();
     }
 

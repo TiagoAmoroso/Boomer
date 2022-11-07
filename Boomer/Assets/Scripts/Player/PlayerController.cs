@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private Sprite idleSprite;
     
     private Rigidbody2D body;
+    private Animator animator;
+    new private SpriteRenderer renderer;
     private float horizontalInput;
     private float verticalInput;
     private float horizontalVelocity;
@@ -16,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
         speed = speed * 100;
     }
 
@@ -27,15 +32,25 @@ public class PlayerController : MonoBehaviour
 
         if(horizontalInput > 0.01f)
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector3(-1,1,1);
         }
         else if(horizontalInput < -0.01f)
         {
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = Vector3.one;
         }
 
         horizontalVelocity = (horizontalInput * speed * Time.deltaTime);
         verticalVelocity = (verticalInput * speed * Time.fixedDeltaTime);
+
+        if (horizontalInput == 0 && verticalInput == 0)
+        {
+            animator.enabled = false;
+            renderer.sprite = idleSprite;
+        }
+        else
+        {
+            animator.enabled = true;
+        }
     }
 
 
