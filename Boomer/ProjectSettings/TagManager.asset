@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Property
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - UI
   - Property
   - Enemy
-  - 
+  - Bullets
   - 
   - 
   - 
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 1992467353
+    locked: 0
+  - name: Bullets
+    uniqueID: 1264138891
     locked: 0
