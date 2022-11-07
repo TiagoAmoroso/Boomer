@@ -93,7 +93,7 @@ public class WaveManager : MonoBehaviour
     {
         currentWave += 1;
         spawner.resetEnemiesSpawned();
-        Debug.Log("Wave: " + currentWave);
+        //Debug.Log("Wave: " + currentWave);
         timeSinceLastWave = 0;
     }
 

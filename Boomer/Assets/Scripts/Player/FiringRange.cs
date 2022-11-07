@@ -10,6 +10,8 @@ public class FiringRange : MonoBehaviour
 
     private void OnMouseDown()
     {
+
+
         currentWeapon = weaponManager.getCurrentWeapon();
 
         if(currentWeapon.isFireable())

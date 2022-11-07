@@ -11,11 +11,16 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float inactiveTransparency;
 
     new private SpriteRenderer renderer;
+    private Vector2 mousePos;
 
 
     private float timeSinceLastShot;
     private bool active = false;
     private bool fireable = true;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject particleEmitter;
+    private GameObject newEmitter;
 
     private void Start()
     {
@@ -62,8 +67,12 @@ public class Weapon : MonoBehaviour
 
     public void fire()
     {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         Debug.Log(gameObject.name + " fired!");
         //particles
+        newEmitter = Instantiate(particleEmitter);
+        newEmitter.transform.position = mousePos;
         //sound
         resetTimeSinceLastShot();
     }

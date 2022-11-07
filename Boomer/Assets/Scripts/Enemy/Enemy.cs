@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     private void OnMouseDown()
     {
+
         currentWeapon = weaponManager.getCurrentWeapon();
 
         if(currentWeapon.isFireable())
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
             damage = currentWeapon.getDamage();
             health.removeHealth(damage);
            
-            currentWeapon.resetTimeSinceLastShot();
+            currentWeapon.fire();
         }
     }
 }
