@@ -95,11 +95,21 @@ public class WaveManager : MonoBehaviour
         spawner.resetEnemiesSpawned();
         //Debug.Log("Wave: " + currentWave);
         timeSinceLastWave = 0;
+
+        if(currentWave > poolFourMaxWave)
+        {
+            spawnMax += 2;
+        }
     }
 
     private void changeWave(int newWave)
     {
         currentWave = newWave;
+    }
+
+    public int getCurrentWave()
+    {
+        return currentWave;
     }
 
 

@@ -66,12 +66,11 @@ public class Defence : MonoBehaviour
 
         Debug.Log(gameObject.name + " fired at " + enemy.gameObject.name);
 
-        /*particles
-        newEmitter = Instantiate(particleEmitter);
-        newEmitter.transform.position = mousePos;
-        */
+        //particles
+        
 
         //sound
+        //SoundManager.instance.PlaySound(attackSound);
 
         timeSinceLastShot = 0;
     }
