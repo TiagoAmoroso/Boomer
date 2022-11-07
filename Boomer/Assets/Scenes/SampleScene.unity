@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71d47aa6e433c144b636bc8641d79f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallbackWeaponObj: {fileID: 638266963}
+  fallbackWeapon: {fileID: 638266965}
 --- !u!1 &409414882
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,9 +683,9 @@ GameObject:
   - component: {fileID: 532542118}
   - component: {fileID: 532542117}
   - component: {fileID: 532542116}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -859,6 +859,7 @@ MonoBehaviour:
   weaponManager: {fileID: 377483979}
   attackSound: {fileID: 0}
   damage: 10
+  shotInterval: 0
   inactiveTransparency: 50
 --- !u!212 &638266966
 SpriteRenderer:
@@ -987,6 +988,7 @@ MonoBehaviour:
   weaponManager: {fileID: 377483979}
   attackSound: {fileID: 0}
   damage: 10
+  shotInterval: 0
   inactiveTransparency: 50
 --- !u!212 &667524384
 SpriteRenderer:
@@ -1336,6 +1338,7 @@ MonoBehaviour:
   weaponManager: {fileID: 377483979}
   attackSound: {fileID: 0}
   damage: 10
+  shotInterval: 0
   inactiveTransparency: 50
 --- !u!212 &715502682
 SpriteRenderer:
@@ -1550,6 +1553,7 @@ MonoBehaviour:
   weaponManager: {fileID: 377483979}
   attackSound: {fileID: 0}
   damage: 10
+  shotInterval: 0
   inactiveTransparency: 50
 --- !u!212 &1097852949
 SpriteRenderer:
@@ -2273,12 +2277,12 @@ SpriteRenderer:
   m_SortingLayerID: -60802075
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 923b1045c5a37584fb617e8c7e7631d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 524e3e86d384f7a4092df4088c7a5efe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.2, y: 1.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2292,7 +2296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626267963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9, y: 0.03, z: 0.04140355}
+  m_LocalPosition: {x: 3.43, y: -1.32, z: 0.04140355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2349,8 +2353,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.9505844, y: 0.22970486}
-  - {x: 3.9115205, y: -3.7135763}
+  - {x: -1.0546174, y: 2.2713652}
+  - {x: 3.474022, y: -3.7500348}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2369,8 +2373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstStateHealth: 7
   secondStateHealth: 3
-  firstStateSprite: {fileID: 21300000, guid: 719c9fe321912c8439670b5cc00f8fdd, type: 3}
-  secondStateSprite: {fileID: 21300000, guid: a90d7e6f21b43bb428790a616b4ebf8c, type: 3}
+  firstStateSprite: {fileID: 21300000, guid: d095fa87499d0fb40b765b5de50f0620, type: 3}
+  secondStateSprite: {fileID: 21300000, guid: 7269b6d83efbf9843992799271bbfc5e, type: 3}
 --- !u!1 &1662367548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,6 +2652,7 @@ MonoBehaviour:
   weaponManager: {fileID: 377483979}
   attackSound: {fileID: 0}
   damage: 50
+  shotInterval: 1
   inactiveTransparency: 50
 --- !u!212 &1712145920
 SpriteRenderer:
@@ -2809,6 +2814,7 @@ MonoBehaviour:
   weaponManager: {fileID: 377483979}
   attackSound: {fileID: 0}
   damage: 10
+  shotInterval: 0
   inactiveTransparency: 50
 --- !u!212 &2006904604
 SpriteRenderer:

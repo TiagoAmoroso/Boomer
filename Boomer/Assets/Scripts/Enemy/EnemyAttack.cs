@@ -55,13 +55,18 @@ public class EnemyAttack : MonoBehaviour
 
     private void attack(Collision2D collision)
     {
-        if(timeSinceLastAttack >= attackInterval)
+        if(collision.collider.tag == "Property")
         {
-            Debug.Log(gameObject.name + " is attacking");
-            //Play animation
-            collision.collider.transform.GetComponent<Health>().removeHealth(damage);
-            timeSinceLastAttack = 0;
-            Debug.Log(collision.gameObject.name + "'s health is at: " + collision.collider.transform.GetComponent<Health>().getHealth());
+            if(timeSinceLastAttack >= attackInterval)
+            {
+                //Play animation
+                Debug.Log(collision.collider.transform.name);
+                collision.collider.transform.GetComponent<Health>().removeHealth(damage);
+                timeSinceLastAttack = 0;
+
+                Debug.Log(gameObject.name + " is attacking " + collision.collider.transform.name + "... " + 
+                collision.collider.transform.name + "'s health is at: " + collision.collider.transform.GetComponent<Health>().getHealth());
+            }
         }
     }
 

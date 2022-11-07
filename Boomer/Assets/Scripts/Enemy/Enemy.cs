@@ -19,10 +19,13 @@ public class Enemy : MonoBehaviour
     private void OnMouseDown()
     {
         currentWeapon = weaponManager.getCurrentWeapon();
-        damage = currentWeapon.getDamage();
-        //Play sound
-        //Spawn particles
 
-        health.removeHealth(damage);
+        if(currentWeapon.isFireable())
+        {
+            damage = currentWeapon.getDamage();
+            health.removeHealth(damage);
+           
+            currentWeapon.resetTimeSinceLastShot();
+        }
     }
 }
