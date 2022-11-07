@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
     private Vector2 mousePos;
 
 
-    private float timeSinceLastShot;
+    private float timeSinceLastShot = 0;
     private bool active = false;
     private bool fireable = true;
 
@@ -49,6 +49,16 @@ public class Weapon : MonoBehaviour
         }
 
         timeSinceLastShot += Time.deltaTime;
+    }
+
+    public float getTimeSinceLastShot()
+    {
+        return timeSinceLastShot;
+    }
+
+    public float getShotInterval()
+    {
+        return shotInterval;
     }
 
     public void resetTimeSinceLastShot()

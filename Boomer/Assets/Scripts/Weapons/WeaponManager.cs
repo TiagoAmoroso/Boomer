@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    [SerializeField] private Weapon fallbackWeapon;
-    [SerializeField] private Collider2D firingRange;
+    [SerializeField] public Weapon fallbackWeapon;
 
     private void Start()
     {

@@ -18,10 +18,10 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log((float)(health.getHealth()) / 10);
+        //Debug.Log((float)(health.getHealth()) / maxHealth);
         currentHealthBar.fillAmount = (float)(health.getHealth()) / maxHealth;
 
-        if(health.getHealth() == 0)
+        if(health.getHealth() <= 0)
         {
             gameObject.SetActive(false);
         }
